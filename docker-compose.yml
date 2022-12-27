@@ -12,6 +12,7 @@ services:
     volumes:
       - jenkins-data:/var/jenkins_home:rw
       - docker-certs:/certs/client:ro
+      - /root/.ssh:/jenkins/.ssh
     depends_on:
       - docker
   docker:
