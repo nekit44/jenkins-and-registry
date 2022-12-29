@@ -22,7 +22,7 @@ services:
       DOCKER_TLS_CERTDIR: /certs
     volumes:
       - docker-certs:/certs/client
-      - jenkins-data:/var/jenkins_home
+      - jenkins-data:/var/jenkins_home:rw
       - docker-data:/var/lib/docker
   registry:
     restart: always
