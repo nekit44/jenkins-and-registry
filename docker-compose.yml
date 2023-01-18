@@ -16,7 +16,8 @@ services:
     depends_on:
       - docker
   docker:
-    image: docker:dind
+    build:
+      context: ./docker
     privileged: true
     environment:
       DOCKER_TLS_CERTDIR: /certs
@@ -28,17 +29,9 @@ services:
     restart: always
     image: registry:2.8.1
     ports:
-      - 5000:5000
-    environment:
-      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt
-      REGISTRY_HTTP_TLS_KEY: /certs/domain.key
-      REGISTRY_AUTH: htpasswd
-      REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
-      REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+      - "5000:5000"
     volumes:
       - registry:/var/lib/registry
-      - ./certs:/certs
-      - ./auth:/auth
 
 volumes:
   jenkins-data:
