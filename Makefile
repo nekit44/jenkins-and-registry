@@ -9,6 +9,9 @@ docker-up:
 docker-down:
 	docker-compose down
 
+docker-down-clear:
+	docker-compose down -v --remove-orphans
+
 docker-pull:
 	docker-compose pull --include-deps
 
@@ -17,3 +20,6 @@ docker-build:
 
 give-me-pass:
 	docker-compose exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+
+password:
+	docker run --rm registry:2.7.0 htpasswd -Bbn registry ${PASS} > htpasswd
