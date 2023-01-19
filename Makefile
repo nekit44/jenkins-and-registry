@@ -23,3 +23,6 @@ give-me-pass:
 
 password:
 	docker run --rm registry:2.7.0 htpasswd -Bbn registry ${PASS} > htpasswd
+
+auth:
+	docker-compose exec jenkins docker login 31.192.235.188:5000
