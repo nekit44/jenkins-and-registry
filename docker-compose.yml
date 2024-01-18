@@ -5,6 +5,7 @@ services:
       context: ./docker/common/jenkins
     ports:
       - "8000:8080"
+    restart: always
     environment:
       DOCKER_HOST: tcp://docker:2376
       DOCKER_CERT_PATH: /certs/client
@@ -19,6 +20,7 @@ services:
     build:
       context: ./docker
     privileged: true
+    restart: always
     environment:
       DOCKER_TLS_CERTDIR: /certs
     volumes:
